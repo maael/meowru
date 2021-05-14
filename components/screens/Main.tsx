@@ -9,11 +9,10 @@ import {
 } from "react-native";
 import {SafeAreaView} from 'react-native-safe-area-context';
 import tailwind, { getColor } from "tailwind-rn";
-import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/AntDesign";
 import EIcon from "react-native-vector-icons/EvilIcons";
 import { LineChart } from "react-native-chart-kit";
-import {Screen, NavStackParams} from '../types';
+import { useNav, Screen } from "../hooks/useNav";
 
 const chartConfig: LineChart['props']['chartConfig'] = {
   backgroundGradientFromOpacity: 0,
@@ -51,7 +50,7 @@ const data: LineChart['props']['data'] = {
 const screenWidth = Dimensions.get("window").width;
 
 export default function MainScreen () {
-  const nav = useNavigation<NavStackParams>();
+  const nav = useNav();
   return (
     <SafeAreaView style={tailwind(`flex-1 bg-yellow-400`)}>
       <View style={tailwind(`flex-1`)}>
@@ -64,7 +63,7 @@ export default function MainScreen () {
         bezier
         withVerticalLines={false}
       />
-      <TouchableOpacity style={tailwind(`absolute right-2 top-2`)} onPress={() => nav.navigate(Screen.NewEntry)}>
+      <TouchableOpacity style={tailwind(`absolute right-1 top-2`)} onPress={() => nav.navigate(Screen.User)}>
         <EIcon name='user' size={60} color='#000000' />
       </TouchableOpacity>
       <View style={tailwind("flex-1")}>

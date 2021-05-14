@@ -1,36 +1,25 @@
 import * as React from 'react';
-import { NavigationContainer, useRoute } from '@react-navigation/native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import MainScreen from './screens/Main';
-import { Text, View } from 'react-native';
-import {Screen, StackParamsList, RouteParams} from './types';
+import Main from './components/screens/Main';
+import EntryEdit from './components/screens/EntryEdit';
+import EntryView from './components/screens/EntryView';
+import User from './components/screens/User';
+import Settings from './components/screens/Settings';
+import {Screen, StackParamsList} from './types';
 
 const Stack = createStackNavigator<StackParamsList>();
-
-function NewEntry () {
-  return (
-    <View>
-      <Text>New Entry</Text>
-    </View>
-  )
-}
-
-function ExistingEntry () {
-  const route = useRoute<RouteParams<Screen.ExistingEntry>>();
-  return (
-    <View>
-      <Text>{route.params.entryId} Entry</Text>
-    </View>
-  )
-}
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={Screen.Main}>
-        <Stack.Screen name={Screen.Main} component={MainScreen} options={{headerShown: false}} />
-        <Stack.Screen name={Screen.NewEntry} component={NewEntry} options={{headerShown: true}} />
-        <Stack.Screen name={Screen.ExistingEntry} component={ExistingEntry} options={{headerShown: true}} />
+      <Stack.Navigator initialRouteName={Screen.Main} screenOptions={{headerShown: false}}>
+        <Stack.Screen name={Screen.Main} component={Main} />
+        <Stack.Screen name={Screen.NewEntry} component={EntryEdit} />
+        <Stack.Screen name={Screen.ExistingEntry} component={EntryView} />
+        <Stack.Screen name={Screen.User} component={User} />
+        <Stack.Screen name={Screen.Settings} component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );
