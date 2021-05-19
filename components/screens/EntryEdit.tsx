@@ -186,7 +186,7 @@ export default function EntryEdit() {
             {groupings.map((g, i) => (
               <Text
                 key={i}
-                style={tailwind(`rounded-sm my-1 mx-2 px-2 bg-gray-100`)}
+                style={[tailwind(`rounded-sm my-1 mx-2 px-2`), getStyleColors(g)]}
               >
                 {g}
               </Text>

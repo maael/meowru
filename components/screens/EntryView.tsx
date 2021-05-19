@@ -12,7 +12,6 @@ export default function EntryView () {
   const route = useRoute<Screen.ExistingEntry>();
   const {store} = React.useContext(StoreContext)!;
   const item = store.find(({id}) => route.params.entryId && id === route.params.entryId);
-  console.info(item);
   let component = null;
   if (!item) {
     component = (
@@ -41,13 +40,13 @@ export default function EntryView () {
           </Text>
         </View>
         <View style={tailwind(`items-center justify-center my-5`)}>
-          <View style={[tailwind(`flex-row p-5 rounded-full`), {backgroundColor: ratingColourBg, color: ratingColour}]}>
-            <Text style={tailwind(`text-3xl`)}>{item.rating}</Text>
+          <View style={[tailwind(`flex-row items-center justify-center w-20 h-20 rounded-full`), {backgroundColor: ratingColourBg, color: ratingColour}]}>
+            <Text style={tailwind(`text-4xl`)}>{item.rating}</Text>
           </View>
         </View>
         <View style={tailwind(`flex-row items-center justify-center mb-2`)}>
           <View style={[tailwind(`h-2 w-2 mx-2 rounded-full`), getStyleColors(item.symptom)]} />
-          <Text style={tailwind(`text-2xl text-center`)}>{item.symptom}</Text>
+          <Text style={tailwind(`text-2xl`)}>{item.symptom}</Text>
         </View>
         <Text style={tailwind(`text-lg font-bold mt-3 mb-1`)}>Groupings</Text>
         <View style={tailwind(`flex-row`)}>
