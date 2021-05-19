@@ -1,4 +1,4 @@
-# Meowru
+# 😸 Meowru
 
 An expo app to help track symptoms.
 
